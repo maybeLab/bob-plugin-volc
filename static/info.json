@@ -1,0 +1,24 @@
+{
+  "identifier": "com.maybelab.volc",
+  "version": "1.0.0",
+  "category": "translate",
+  "name": "火山引擎机器翻译",
+  "author": "shoyuf",
+  "homepage": "https://github.com/maybeLab/bob-plugin-volc",
+  "appcast": "",
+  "minBobVersion": "0.8.0",
+  "options": [
+    {
+      "identifier": "id",
+      "type": "text",
+      "title": "Access Key ID",
+      "defaultValue": ""
+    },
+    {
+      "identifier": "key",
+      "type": "text",
+      "title": "Secret Access Key",
+      "defaultValue": ""
+    }
+  ]
+}
