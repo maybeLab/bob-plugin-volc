@@ -1,12 +1,12 @@
 const AdmZip = require("adm-zip");
-
+const { version } = require("./package.json");
 const createZip = () => {
   const zip = new AdmZip();
   zip.addLocalFile(`./dist/main.js`);
   ["icon.png", "info.json"].forEach((file) => {
     zip.addLocalFile(`./static/${file}`);
   });
-  zip.writeZip("./dist/bob-plugin-volc.bobplugin");
+  zip.writeZip(`./dist/bob-plugin-volc_v${version}.bobplugin`);
   console.log(new Date(), "Zip created");
 };
 
