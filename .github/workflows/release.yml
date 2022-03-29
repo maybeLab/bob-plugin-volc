@@ -1,0 +1,39 @@
+name: Release
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GIT_ACTION_TOKEN }}
+
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '16'
+
+      - name: Install Dependencies And Build
+        run: |
+          npm ci
+          node build.js --release
+
+      - name: Commit files
+        run: |
+          git config --global user.name '<%= tpl.author %>'
+          git config --global user.email '<%= tpl.author %>@users.noreply.github.com'
+          git commit -am "release: plugin update"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GIT_ACTION_TOKEN }}
+
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: 'release/*.bobplugin'
+          token: ${{ secrets.GIT_ACTION_TOKEN }}
