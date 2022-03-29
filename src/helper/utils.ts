@@ -1,7 +1,7 @@
 import debug from "debug";
 import * as packageInfo from "../../package.json";
 export const packageName = packageInfo.name;
-export const packageVersion = packageInfo.version;
+export const packageVersion = '1.1.2';
 export function createDebug(moduleName: string): debug.Debugger {
   return debug(`${packageName}:${moduleName}`);
 }
