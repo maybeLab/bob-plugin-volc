@@ -118,31 +118,38 @@ const langMap = new Map(items);
 const cache = new Bob.Cache();
 const INSTALL = "__INSTALLED";
 
+const buryPoint = (eventName) => {
+  Bob.api.$http
+    .post<{ status: 1 | 0 }>({
+      url: "https://api.mixpanel.com/track?verbose=1&%69%70=1",
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: {
+        data: JSON.stringify([
+          {
+            event: eventName,
+            properties: {
+              token: "756388d6385bd7d3b849b18e4016c84a",
+              identifier: Bob.api.$info.identifier,
+              version: Bob.api.$info.version,
+            },
+          },
+        ]),
+      },
+    })
+    .finally(() => {
+      cache.set(INSTALL, Bob.api.$info.version);
+    });
+};
+
 function supportLanguages() {
   if (!cache.get(INSTALL)) {
-    Bob.api.$http
-      .post<{ status: 1 | 0 }>({
-        url: "https://api.mixpanel.com/track?verbose=1&%69%70=1",
-        header: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: {
-          data: JSON.stringify([
-            {
-              event: "plugin-installed",
-              properties: {
-                token: "756388d6385bd7d3b849b18e4016c84a",
-                identifier: Bob.api.$info.identifier,
-                version: Bob.api.$info.version,
-              },
-            },
-          ]),
-        },
-      })
-      .then((res) => {
-        // @ts-ignore
-        res.data.status === 1 && cache.set(INSTALL, true);
-      });
+    // 没有安装过
+    buryPoint("plugin-installed");
+  } else if (cache.get(INSTALL) !== Bob.api.$info.version) {
+    // 更新版本或安装了最初版本，标识为 true
+    buryPoint("plugin-updated");
   }
   return Array.from(new Set(langMap.keys()));
 }
