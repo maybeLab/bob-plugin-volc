@@ -30,7 +30,7 @@ const INFO_JSON = {
       defaultValue: "",
     },
   ],
-  appcast: "https://cdn.jsdelivr.net/gh/maybeLab/bob-plugin-volc@main/appcase.json",
+  appcast: "https://cdn.jsdelivr.net/gh/maybeLab/bob-plugin-volc@main/appcast.json",
 };
 
 const isRelease = process.argv.includes("--release");
