@@ -7,6 +7,13 @@
       "sha256": "33e293055bb4a30a007a8ce6e1d49fc8ab24c37bacaabf324269d87f41776788",
       "url": "https://cdn.jsdelivr.net/gh/maybeLab/bob-plugin-volc@main/release/bob-plugin-volc_v1.0.0.bobplugin",
       "minBobVersion": "0.8.0"
+    },
+    {
+      "version": "1.0.1",
+      "desc": "更新内容见: https://github.com/maybeLab/bob-plugin-volc/releases",
+      "sha256": "d4736d01bb0a2df28c7d65c1e1a7f133da47d9419ed0272a0408c2b08facb1a7",
+      "url": "https://cdn.jsdelivr.net/gh/maybeLab/bob-plugin-volc@main/release/bob-plugin-volc_v1.0.1.bobplugin",
+      "minBobVersion": "0.8.0"
     }
   ]
 }
