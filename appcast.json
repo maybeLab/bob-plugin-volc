@@ -1,6 +1,6 @@
 {
   "identifier": "com.maybelab.volc",
-  "version": [
+  "versions": [
     {
       "version": "1.0.0",
       "desc": "更新内容见: https://github.com/maybeLab/bob-plugin-volc/releases",
