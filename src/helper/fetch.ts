@@ -35,7 +35,7 @@ export default async function request(
         // @ts-expect-error
         method: config.method,
         header: config.headers,
-        body: JSON.parse(config.data),
+        body: Bob.api.$data.fromUTF8(config.data),
         timeout: 5000,
       });
     },

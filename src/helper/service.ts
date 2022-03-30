@@ -63,8 +63,8 @@ export default class Service {
    * @param createParams.method http method default is POST. You can also use 'PUT'
    * @param createParams.contentType body content type. support: json urlencode form-data. default is urlencode.
    */
-  createUrlEncodeAPI(Action: string, createParams?: CreateAPIParams) {
-    return this.createAPI(Action, {
+  createUrlEncodeAPI<RequestData, Result>(Action: string, createParams?: CreateAPIParams) {
+    return this.createAPI<RequestData, Result>(Action, {
       method: "POST",
       contentType: "urlencode",
       ...createParams,
