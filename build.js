@@ -49,8 +49,8 @@ const initAppcast = () => {
   };
   let appcastPath = path.resolve(__dirname, "./appcast.json");
   const appcast = JSON.parse(fs.readFileSync(appcastPath, "utf-8"));
-  if (!appcast.version.find((item) => item.version === currentVersionInfo.version)) {
-    appcast.version.push(currentVersionInfo);
+  if (!appcast.versions.find((item) => item.version === currentVersionInfo.version)) {
+    appcast.versions.push(currentVersionInfo);
     fs.writeFileSync(appcastPath, JSON.stringify(appcast, null, 2), { encoding: "utf-8" });
   }
 };
