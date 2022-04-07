@@ -19,6 +19,7 @@ jobs:
 
       - name: Install Dependencies And Build
         run: |
+          rm -rf ./release
           npm ci
           node build.js --release
 
